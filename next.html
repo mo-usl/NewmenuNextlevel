@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXT LEVEL MENU</title>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+</head>
+
+<body onscroll="imscroll(this)" style="background-color: #171a23; margin: 0; padding: 0;">
+  <style>
+    #menu {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 100000;
+      background-color: #171a23;
+      border: 2px solid #262a36;
+      border-radius: 10px;
+      display: flex;
+      overflow: auto;
+      font-size: 20px;
+      color: white;
+      padding: 8px;
+      filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.479));
+      align-items: center;
+    }
+
+    #menu>* {
+      flex-shrink: 0;
+    }
+
+
+    .fi {
+      padding: 8px;
+      background-color: #262a36;
+      border-radius: 8px;
+      margin-left: 8px;
+      transition: all ease-in-out 350ms;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    * ::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+    }
+
+    .fbg {
+      background-color: #ee304c;
+    }
+
+
+  </style>
+  <img src="./svg/1.svg" alt="">
+  <img src="./svg/1.png" style="margin-top: -110%; width: 100%;" alt="">
+  <img data-id="1" src="./svg/2.svg" class="sec" alt="">
+  <img data-id="2" src="./svg/3.svg" class="sec" alt="">
+  <img data-id="3" src="./svg/4.svg" class="sec" alt="">
+  <img data-id="4" src="./svg/5.svg" class="sec" alt="">
+  <img data-id="5" src="./svg/6.svg" class="sec" alt="">
+  <img data-id="6" src="./svg/7.svg" class="sec" alt="">
+  <img data-id="7" src="./svg/8.svg" class="sec" alt="">
+  <img data-id="8" src="./svg/9.svg" class="sec" alt="">
+  <img data-id="9" src="./svg/10.svg" class="sec" alt="">
+  <img data-id="10" src="./svg/11.svg" class="sec" alt="">
+  <img data-id="11" src="./svg/12.svg" class="sec" alt="">
+  <img data-id="12" src="./svg/13.svg" class="sec" alt="">
+  <img data-id="13" src="./svg/14.svg" class="sec" alt="">
+  <img data-id="14" src="./svg/15.svg" class="sec" alt="">
+  <img data-id="15" src="./svg/16.svg" class="sec" alt="">
+  <img data-id="16" src="./svg/17.svg" class="sec" alt="">
+  <img src="./svg/18.svg" alt="">
+  <div dir="rtl" id="menu">
+    <i onclick="scrolltoo(1)" class="fi fi-sr-mug-hot fbg"></i>
+    <i onclick="scrolltoo(2)" class="fi fi-sr-snowflake"></i>
+    <i onclick="scrolltoo(3)" class="fi fi-sr-cup-straw-swoosh"></i>
+    <i onclick="scrolltoo(4)" class="fi fi-sr-drink-alt"></i>
+    <i onclick="scrolltoo(5)" class="fi fi-sr-martini-glass-citrus"></i>
+    <i onclick="scrolltoo(6)" class="fi fi-sr-blender"></i>
+    <i onclick="scrolltoo(7)" class="fi fi-sr-bolt"></i>
+    <i onclick="scrolltoo(8)" class="fi fi-sr-plate-utensils"></i>
+    <i onclick="scrolltoo(9)" class="fi fi-sr-baguette"></i>
+    <i onclick="scrolltoo(10)" class="fi fi-sr-chocolate"></i>
+    <i onclick="scrolltoo(11)" class="fi fi-sr-popcorn"></i>
+    <i onclick="scrolltoo(12)" class="fi fi-sr-smoking"></i>
+    <i onclick="scrolltoo(13)" class="fi fi-sr-hamburger"></i>
+    <i onclick="scrolltoo(14)" class="fi fi-sr-pizza-slice"></i>
+    <i onclick="scrolltoo(15)" class="fi fi-sr-salad"></i>
+    <i onclick="scrolltoo(16)" class="fi fi-sr-croissant"></i>
+  </div>
+  <script>
+    function scrolltoo(x) {
+      document.body.getElementsByClassName('sec')[x - 1].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest"
+      });
+    }
+
+
+
+    let secs = document.body.getElementsByClassName('sec');
+
+    let btnas = document.body.getElementsByClassName('fi');
+
+    let ddto;
+
+    function imscroll(x) {
+
+      clearTimeout(ddto);
+
+      ddto = setTimeout(() => {
+
+
+        let xs = secs[0];
+        for (let i = 0; i < secs.length; i++) {
+          let top = secs[i].getBoundingClientRect().top + (screen.height * 0.6);
+          if (top < screen.height && top > -screen.height) {
+            xs = secs[i];
+          }
+        }
+
+        for (let i = 0; i < btnas.length; i++) {
+          btnas[i].classList.remove('fbg');
+        }
+
+        btnas[xs.dataset.id - 1].classList.add('fbg');
+
+      }, 250);
+    }
+  </script>
+</body>
+
+</html>
